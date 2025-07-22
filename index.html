@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>GunBound Avatar Code Generator - By KyLL3R</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="gb.ico" type="image/x-icon">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white text-center">
+            <h2 class="mb-0">GunBound Avatar Code Generator</h2>
+          </div>
+          <div class="card-body">
+
+            <form id="codigoForm" onsubmit="event.preventDefault(); gerarCodigo();">
+              
+              <div class="mb-3">
+                <label for="prefixo" class="form-label">Select a prefix:</label>
+                <select id="prefixo" class="form-select" required>
+                  <option value="mh">mh (Male Head)</option>
+                  <option value="mb">mb (Male Body)</option>
+                  <option value="mg">mg (Male Glass)</option>
+                  <option value="mf">mf (Flag)</option>
+                  <option value="fh">fh (Female Head)</option>
+                  <option value="fb">fb (Female Body)</option>
+                  <option value="fg">fg (Female Glass)</option>
+                  <option value="smh">smh</option>
+                  <option value="smb">smb</option>
+                  <option value="smg">smg</option>
+                  <option value="smf">smf</option>
+                  <option value="sfh">sfh</option>
+                  <option value="sfb">sfb</option>
+                  <option value="sfg">sfg</option>
+                  <option value="b">b</option>
+                  <option value="f">f</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="numero" class="form-label">Enter a number:</label>
+                <input type="text" id="numero" class="form-control" maxlength="6" pattern="[0-9]+" required autocomplete="off" placeholder="Only Numbers"/>
+                <div class="form-text">Enter 5 or 6 digits, depending of the chosen prefix.</div>
+              </div>
+              
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Generate Code</button>
+              </div>
+            </form>
+
+            <div id="resultado" class="alert alert-info mt-4 text-center d-none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function gerarCodigo() {
+      const prefixo = document.getElementById('prefixo').value;
+      const numero = document.getElementById('numero').value.trim();
+      const resultadoDiv = document.getElementById('resultado');
+      let cod = "";
+
+      if (prefixo=="mh")      cod = parseInt(numero) + 98304;
+      else if (prefixo=="mb") cod = parseInt(numero) + 32768;
+      else if (prefixo=="mg") cod = parseInt(numero) + 163840;
+      else if (prefixo=="mf") cod = parseInt(numero) + 229376;
+      else if (prefixo=="fh") cod = parseInt(numero) + 65536;
+      else if (prefixo=="fb") cod = parseInt(numero) + 0;
+      else if (prefixo=="fg") cod = parseInt(numero) + 131072;
+      else if (prefixo=="b") cod = parseInt(numero) + 0;
+      else if (prefixo=="smh") cod = parseInt(numero) + 98304;
+      else if (prefixo=="smb") cod = parseInt(numero) + 32768;
+      else if (prefixo=="smg") cod = parseInt(numero) + 163840;
+      else if (prefixo=="smf") cod = parseInt(numero) + 229376;
+      else if (prefixo=="sfh") cod = parseInt(numero) + 65536;
+      else if (prefixo=="sfb") cod = parseInt(numero) + 0;
+      else if (prefixo=="sfg") cod = parseInt(numero) + 131072;
+      else if (prefixo=="f") cod = parseInt(numero) + 0;
+      else cod = fullcode;
+
+      // Exibir resultado estilizado com Bootstrap
+      resultadoDiv.textContent = `Código gerado: ${cod}`;
+      resultadoDiv.classList.remove('d-none');
+      resultadoDiv.classList.add('show');
+    }
+  </script>
+
+    <!-- Footer -->
+<footer class="mt-5">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12">
+                <p>GunBound Avatar Code Generator [Rebuilt By <b>KyLL3R</b>] - The First PHP Version Was Created By <i>Thainan</i>.</p>
+                <p>Developed by <a href="https://www.linkedin.com/in/lfelipemgr/" target="_blank"><b>LFMG</b></a> (Discord: lfmg93)</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
